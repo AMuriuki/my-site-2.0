@@ -1,40 +1,73 @@
 {% load static wagtailuserbar %}
-
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/arnoldnderitu.css' %}">
-
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
+<html lang="en-US">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="Arnold Nderitu is a software engineering practitioner. He provides startups and enterprises with software development services." />
+    <meta name="keyword" content="Arnold, Nderitu, software, engineering, developer, python, node js, javascript" />
+    <!--  Title -->
+    <title>
+        {% block title %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
         {% endblock %}
-    </head>
-
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
-
-        {% block content %}{% endblock %}
-
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/arnoldnderitu.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
+        {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+        {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
         {% endblock %}
-    </body>
+    </title>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&amp;display=swap" rel="stylesheet">
+
+    <!-- <link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/x-icon" />
+    <link rel="icon" href="assets/img/favicon-32x32.png" type="image/x-icon" /> -->
+    {# Global stylesheets #}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/arnoldnderitu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/plugins.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+
+    {% block extra_css %}
+    {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+    
+    <style>
+        [data-dsn-grid="move-up"] img,
+        [data-dsn-grid="moveUp"] img {
+            top: 0% !important;
+            height: 100% !important;
+        }
+
+        .work-under-header .work-item img {
+            object-fit: scale-down !important;
+        }
+
+        .work-under-header .work-item .item-info {
+            width: 100% !important;
+        }
+    </style>
+
+</head>
+
+<!-- <body class="{% block body_class %}{% endblock %}"> -->
+    {% wagtailuserbar %}
+
+    {% block content %}{% endblock %}
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/arnoldnderitu.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/dsn-grid.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
+<!-- </body> -->
+
 </html>
