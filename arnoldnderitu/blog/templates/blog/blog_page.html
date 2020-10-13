@@ -36,16 +36,16 @@
                 <div class="news-content">
                     <div class="news-content-inner">
                         <div class="News-socials-wrapper">
-
+                            {% if page.tags.all.count %}
                             <div>
-
                                 <div class="cat">
-                                    <h5 class="title-caption">Tagged with: </h5>
-                                    <a href="#"><span>Blog</span></a>
-                                    <a href="#"><span>Creative</span></a>
-                                    <a href="#"><span>Design</span></a>
+                                    <h5 class="title-caption">Tags:</h5>
+                                    {% for tag in page.tags.all %}
+                                    <a style="margin-bottom: 5%;" href="{% slugurl 'tags' %}?tag={{tag}}"><span>{{tag}}</span></a>
+                                    {% endfor %}                                    
                                 </div>
                             </div>
+                            {% endif %}
 
                             <div>
                                 <div class="post-share">
