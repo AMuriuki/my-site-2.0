@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 <main class="main-root">
@@ -10,8 +10,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="contenet-hero">
-                            <h5>INSIGHTS & IDEAS</h5>
-                            <h1>My Blog</h1>
+                            <h5>{{page.title}}</h5>
+                            <h1>Blog</h1>
                         </div>
                     </div>
                 </div>
@@ -21,17 +21,22 @@
         <div class="wrapper">
             <div class="root-blog">
                 <div class="container">
-
+                    {% for post in blogpages %}
+                    {% with post=post.specific %}
                     <article class="post-list-item">
                         <figure>
-                            <a class="image-zoom effect-ajax" href="post.html" data-dsn-animate="up">
-                                <img src="{% static 'assets/img/blog/1.jpg' %}" alt="">
+                            <a class="image-zoom effect-ajax" href="{% pageurl post %}" data-dsn-animate="up">
+                                {% with post.main_image as main_image %}
+                                {% if main_image %}
+                                <img src="/media/original_images/{{main_image}}" alt="">
+                                {% endif %}
+                                {% endwith %}
                             </a>
                         </figure>
                         <div class="post-list-item-content">
                             <div class="post-info-top">
                                 <div class="post-info-date">
-                                    <span>2 september, 2019</span>
+                                    <span>{{post.date}}</span>
                                 </div>
 
                                 <div class="post-info-category">
@@ -39,17 +44,19 @@
                                 </div>
                             </div>
                             <h3>
-                                <a href="#">interview with Communication Arts about Jayasom website</a>
+                                <a href="{% pageurl post %}">{{post.title}}</a>
                             </h3>
 
                             <div class="link-custom" data-dsn-animate="up">
-                                <a class="image-zoom effect-ajax" href="post.html" data-dsn="parallax">
+                                <a class="image-zoom effect-ajax" href="{% pageurl post %}" data-dsn="parallax">
                                     <span>Read More</span>
                                 </a>
                             </div>
                         </div>
                     </article>
-                    <article class="post-list-item">
+                    {% endwith %}
+                    {% endfor %}
+                    <!-- <article class="post-list-item">
                         <figure>
                             <a class="image-zoom effect-ajax" href="post.html" data-dsn-animate="up">
                                 <img src="{% static 'assets/img/blog/4.jpg' %}" alt="">
@@ -75,7 +82,7 @@
                                 </a>
                             </div>
                         </div>
-                    </article>
+                    </article> -->
 
                     <div class="dsn-pagination">
                         <span class="page-numbers current ">
@@ -107,25 +114,7 @@
 
                 </div>
             </div>
-
-            <footer>
-                <div class="info">
-                    <div class="contact-footer">
-                        <a href="tel:010" class="phone">+254 708 486 068</a>
-                        <a href="#" class="email">info@arnoldnderitu.io</a>
-                    </div>
-                    <div class="copyright-social">
-                        <p>© <script>
-                            document.getElementById("year").innerHTML = new Date().getFullYear();
-                        </script> Arnold Nderitu</p>
-                        <ul>
-                            <li><a href="#" target="_blank">Instagram</a></li>
-                            <li><a href="#" target="_blank">Facebook</a></li>
-                            <li><a href="#" target="_blank">Linkedin</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
+            {% include "footer.html" %}
         </div>
     </div>
 </main>

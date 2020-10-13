@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<main class="main-root">
+    <div id="dsn-scrollbar">
+        <header>
+            <div class="header-single-post" data-dsn-header="project">
+                {% for item in page.gallery_images.all %}
+                <div class="post-parallax-wrapper" data-overlay="3">
+                    <img id="dsn-hero-parallax-img" class="w-100 has-top-bottom" src="/media/original_images/{{item.image}}" alt=""
+                        data-dsn-header="blog" data-dsn-ajax="img">
+                </div>
+                {% endfor %}
+                <div class="container">
+
+                    <div class="inner-box m-section">
+                        <div class="post-info">
+                            <a href="#" class="blog-post-date dsn-link">{{page.date}}</a>
+                            <div class="blog-post-cat dsn-link">
+                                <a href="#">Uncategorized</a>
+                            </div>
+                        </div>
+
+                        <h3 class="title-box mt-10">{{page.title}}</h3>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="news-content">
+                    <div class="news-content-inner">
+                        <div class="News-socials-wrapper">
+
+                            <div>
+
+                                <div class="cat">
+                                    <h5 class="title-caption">Tagged with: </h5>
+                                    <a href="#"><span>Blog</span></a>
+                                    <a href="#"><span>Creative</span></a>
+                                    <a href="#"><span>Design</span></a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="post-share">
+                                    <h5 class="title-caption">Share with:</h5>
+                                    <ul>
+                                        <li><a href="#" target="_blank">Facebook</a></li>
+                                        <li><a href="#" target="_blank">Twitter</a></li>
+                                        <li><a href="#" target="_blank">Linkedin</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-content">
+                            <p>
+                                {{page.intro}}
+                            </p>
+                            <p>
+                                {{ page.body|richtext}}                                
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="comments-post m-section">
+                        <div class="comments-area section-margin">
+                            <div class="comments-title">
+                                <h4 class="subtitle">Comments</h4>
+                            </div>
+
+                            <ol class="comment-list">
+                                <li class="comment">
+                                    <div class="comment-body">
+                                        <div class="comment-author">
+                                            <img alt="" src="{% static 'assets/img/avatar/2.jpg' %}">
+                                        </div>
+                                        <div class="comment-text">
+                                            <div class="comment-date">January 23, 2019</div>
+                                            <div class="comment-info">
+                                                <h6 class="comment-name">
+                                                    Diana Torres </h6>
+                                            </div>
+                                            <div class="text-holder">
+                                                <p>Rassa id neque aliquam vestibulum morbi blandit in fermentum et
+                                                    sollicitudin ac orci
+                                                    phasellus egestas tellus velit ut tortor pretium viverra
+                                                    suspendisse
+                                                    potenti nullam ac
+                                                    tortor
+                                                    eu turpis egestas pretium.</p>
+                                            </div>
+                                            <a class="comment-reply-link" href="#"><i class="fas fa-reply"></i>
+                                                reply</a>
+                                        </div>
+                                    </div>
+
+                                    <ul class="children">
+                                        <li class="comment">
+                                            <div class="comment-body">
+                                                <div class="comment-author">
+                                                    <img alt="" src="{% static 'assets/img/avatar/1.jpg' %}">
+                                                </div>
+                                                <div class="comment-text">
+                                                    <div class="comment-date">January 23, 2019</div>
+                                                    <div class="comment-info">
+                                                        <h6 class="comment-name">
+                                                            Diana Torres </h6>
+                                                    </div>
+                                                    <div class="text-holder">
+                                                        <p>Rassa id neque aliquam vestibulum morbi blandit in
+                                                            fermentum
+                                                            et sollicitudin ac orci
+                                                            phasellus egestas tellus velit ut tortor pretium viverra
+                                                            suspendisse potenti nullam ac
+                                                            tortor
+                                                            eu turpis egestas pretium.</p>
+                                                    </div>
+                                                    <a class="comment-reply-link" href="#"><i class="fas fa-reply"></i>
+                                                        reply</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="comment">
+                                    <div class="comment-body">
+                                        <div class="comment-author">
+                                            <img alt="" src="{% static 'assets/img/avatar/2.jpg' %}">
+                                        </div>
+                                        <div class="comment-text">
+                                            <div class="comment-date">January 23, 2019</div>
+                                            <div class="comment-info">
+                                                <h6 class="comment-name">
+                                                    Diana Torres </h6>
+                                            </div>
+                                            <div class="text-holder">
+                                                <p>Rassa id neque aliquam vestibulum morbi blandit in fermentum et
+                                                    sollicitudin ac orci
+                                                    phasellus egestas tellus velit ut tortor pretium viverra
+                                                    suspendisse
+                                                    potenti nullam ac
+                                                    tortor
+                                                    eu turpis egestas pretium.</p>
+                                            </div>
+                                            <a class="comment-reply-link" href="#"><i class="fas fa-reply"></i>
+                                                reply</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ol>
+                        </div>
+
+                        <div class="comments-form">
+                            <div class="comments-title">
+                                <h4 class="subtitle">Comments</h4 class="subtitle">
+                            </div>
+
+                            <form>
+                                <div class="entry">
+                                    <label>What's your name?</label>
+                                    <input id="form_name" type="text" name="name" placeholder="Type your name"
+                                        required="required" data-error="name is required.">
+                                </div>
+
+                                <div class="entry">
+                                    <label>What's your email address?</label>
+                                    <input id="form_email" type="email" name="email"
+                                        placeholder="Type your Email Address" required="required"
+                                        data-error="Valid email is required.">
+                                </div>
+
+                                <div class="entry">
+                                    <label>comment?</label>
+                                    <textarea id="" class="form-control" name="message"
+                                        placeholder="Tell us about you and the world" required="required"
+                                        data-error="Your comment"></textarea>
+                                </div>
+
+                                <div class="submit-div image-zoom" data-dsn="parallax">
+                                    <input name="submit" type="submit" class="custom-btn" value="submit" data-parallex>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="contact-up next-post-up section-margin section-padding">
+                <div class="container">
+                    <div class="c-wapp">
+                        <a href="contact.html" class="effect-ajax">
+                            <span class="hiring">
+                                A lovely trip to London
+                            </span>
+                            <span class="career">
+                                Next Post
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            {% include "footer.html" %}
+        </div>
+    </div>
+</main>
+{% endblock %}
