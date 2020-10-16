@@ -18,9 +18,15 @@
                     <div class="inner-box m-section">
                         <div class="post-info">
                             <a href="#" class="blog-post-date dsn-link">{{page.date}}</a>
+                            {% with categories=page.categories.all %}
+                            {% if categories %}
                             <div class="blog-post-cat dsn-link">
-                                <a href="#">Uncategorized</a>
+                                {% for category in categories %}
+                                <a href="#">{{category.name}}</a>
+                                {% endfor %}
                             </div>
+                            {% endif %}                            
+                            {% endwith %}
                         </div>
 
                         <h3 class="title-box mt-10">{{page.title}}</h3>
@@ -49,10 +55,10 @@
 
                             <div>
                                 <div class="post-share">
-                                    <h5 class="title-caption">Share with:</h5>
+                                    <h5 class="title-caption">Share on:</h5>
                                     <ul>
-                                        <li><a href="#" target="_blank">Facebook</a></li>
-                                        <li><a href="#" target="_blank">Twitter</a></li>
+                                        <li><a href="#" target="_blank">Kingschat</a></li>
+                                        <li><a href="#" target="_blank">Yookos</a></li>
                                         <li><a href="#" target="_blank">Linkedin</a></li>
                                     </ul>
                                 </div>
@@ -69,7 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="comments-post m-section">
+                    <div class="comments-post m-section" style="display: none;">
                         <div class="comments-area section-margin">
                             <div class="comments-title">
                                 <h4 class="subtitle">Comments</h4>
@@ -199,7 +205,7 @@
                     <div class="c-wapp">
                         <a href="contact.html" class="effect-ajax">
                             <span class="hiring">
-                                A lovely trip to London
+                                Starting Out as a Software Developer
                             </span>
                             <span class="career">
                                 Next Post
